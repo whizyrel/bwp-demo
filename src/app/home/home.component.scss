@@ -28,6 +28,14 @@ header {
         &.app-nav--links {
             a {
                 font-size: 14px;
+
+                &:hover {
+                    padding: .5rem;
+                    background-color: red;
+                    cursor: pointer;
+                    border-radius: 4px;
+                    color: white!important;
+                }
             }
         }
     }
