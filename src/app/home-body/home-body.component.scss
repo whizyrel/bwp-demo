@@ -1,0 +1,181 @@
+$page-top-padding-md: /* 64px */0px;
+$page-top-padding-sm: /* 56px */0px;
+
+
+@import '../../styles';
+
+.app-home--container {
+    margin-top: $page-top-padding-sm;
+    height: fit-content;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    .app-home--intro__carousel {
+        min-height: 80vh;
+        background-image: url('/assets/images/texture-1-red-shade.svg');
+        @include responsive-image-contain();
+
+        .app--home-intro--main-text {
+            line-height: 1.2;
+            font-size: 3.5rem;
+        }
+
+        .col-md-5, .col-md-7 {
+            margin-bottom: .5rem;
+        }
+
+        .app-home--intro--carousel_image {
+            img {
+                @include responsive-image-cover();
+                border-radius: 16px;
+                height: 420px;
+                max-width: 416px;
+                min-width: 240px;
+                box-shadow: 10px 14px 11px 1px #e4e0e0c4;
+            }
+
+            img:nth-child(2n) {
+                margin-top: -240px!important;
+                margin-right: 24px!important;
+            }
+        }
+    }
+
+    .app-rooms--section {
+        .col-md-3, .col-md-6 {
+            margin-bottom: 1rem;
+        }
+
+        .app-rooms--image {
+            @include responsive-background-cover();
+            height: 256px;
+            background-clip: content-box;
+
+            div {
+                span {
+                    font-family: Quicksand;
+                    font-size: 13px;
+                }
+            }
+        }
+    }
+
+    .app-home-testimonials {
+        background-color: $theme-secondary--light;
+        font-family: "Quicksand", sans-serif;
+
+        .card {
+            flex-basis: 240px;
+            flex-grow: 2;
+            flex-shrink: 1;
+            height: 396px;
+            margin: 0 .5rem;
+        }
+
+        @media (max-width: 576px) {
+            .col-md-4 {
+                margin-bottom: 124px;
+            }
+        }
+
+        .app-home-testimonial--image {
+            width: 196px;
+            height: 196px;
+            border-radius: 50%;
+            border-style: solid;
+            border-width: 2px;
+            border-color: #ffffff;
+
+            img {
+                @include responsive-image-cover();
+            }
+        }
+    }
+
+    .app-home-clients--section {
+        font-family: "Quicksand", sans-serif;
+
+        img {
+            @include responsive-image-contain();
+            height: 54px;
+            flex-basis: 96px;
+            flex-grow: 2;
+            flex-shrink: 2;
+            margin-left: .5rem;
+            margin-right: .5rem;
+            margin-bottom: 1.75rem;
+        }
+    }
+
+    .app-home-footer {
+        font-family: "Quicksand", sans-serif;
+        background-color: $theme-primary-light;
+
+        .app-footer-copyright {
+            background-color: $theme-primary-dark;
+        }
+    }
+}
+
+@media (max-width: 320px) {
+    img:nth-child(2n) {
+        margin-left: 24px!important;
+    }
+}
+
+@media (max-width: 575px) {
+    .app-home--intro__carousel {
+        .app--home-intro--main-text {
+            font-size: 2.25rem!important;
+        }
+    }
+
+    .app-home--intro--carousel_image {
+        img {
+            width: 80%!important;
+        }
+    }
+
+    .app-rooms--section .row {
+        flex-wrap: nowrap!important;
+        overflow-y: hidden;
+        overflow-x: auto;
+        max-height: 256px;
+
+        .app-rooms--image {
+            min-width: 256px;
+        }
+    }
+
+    .app-home-testimonials {
+        .card {
+            margin-bottom: 6.5rem!important;
+            height: fit-content!important;
+        }
+    }
+
+    #contact-us {
+        h3 {
+            font-size: 20px;
+        }
+    }
+
+    .app-home-footer--social-links {
+        justify-content: center;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 992px) {
+    .app-home-testimonials {
+        .card {
+            // flex-basis: 20px;
+            margin-bottom: 3rem!important;
+        }
+    }
+}
+
+@media (min-width: 576px) {
+    .app-home-footer--social-links {
+        flex-direction: column;
+    }
+}

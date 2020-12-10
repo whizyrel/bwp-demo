@@ -1,1 +1,142 @@
-/* You can add global styles to this file, and also import other style files */
+$mdc-theme-primary: #6200ee;
+$mdc-theme-secondary: #018786;
+$mdc-theme-background: #fff;
+
+$theme-primary: #e01b1b;
+$theme-primary-dark: #ad0721;
+$theme-primary-light: #ca0a28;
+$theme-secondary: #ffffff;
+$theme-secondary--light: #e5e5e526;
+
+$card-width: 196px;
+$border-radius-large: 16px;
+
+@mixin responsive-image-contain {
+    object-fit: contain;
+    -o-object-fit: contain;
+    object-position: 50% 50%;
+    -o-object-position: 50% 50%;
+}
+
+@mixin responsive-image-cover {
+    object-fit: cover;
+    -o-object-fit: cover;
+    object-position: 50% 50%;
+    -o-object-position: 50% 50%;
+}
+
+@mixin responsive-background-contain {
+    background-size: contain;
+    background-position: 50% 50%;
+}
+
+@mixin responsive-background-cover {
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+@mixin button-basic-padding {
+    padding: .5rem;
+}
+
+// import theming for all mdc components:
+@import "material-components-web/material-components-web";
+
+* {
+    outline: 0!important;
+}
+
+body {
+    font-family: 'Noto Sans', sans-serif;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none!important;
+
+    &:hover {
+        text-decoration: none!important;
+        color: inherit;
+    }
+}
+
+.justify-content-evenly {
+    justify-content: space-evenly;
+}
+
+.button {
+    @include button-basic-padding();
+    background-color: inherit;
+    border-width: 0;
+    border-style: none;
+    border-radius: 4px;
+    box-shadow: 0px 20px 40px #28399040;
+}
+
+.button[color="basic"] {
+    background-color: #e5e5e5;
+    color: #000000;
+    @include button-basic-padding();
+}
+
+.button[color="primary"] {
+    background-color: $theme-primary;
+    color: #000000;
+    @include button-basic-padding();
+}
+
+.button[color="secondary"] {
+    background-color: $theme-secondary;
+    color: $theme-primary;
+    @include button-basic-padding();
+}
+
+.button-filled[color="primary"] {
+    border-width: 0;
+    border-style: none;
+    background-color: $theme-primary;
+    color: #ffffff;
+}
+
+.button-outline {
+    border-width: 2px;
+    border-style: solid;
+}
+
+.button-outline[color="primary"] {
+    background-color: transparent;
+    border-color: $theme-primary;
+    color: #ffffff;
+    @include button-basic-padding();
+}
+
+.button-outline[color="secondary"] {
+    background-color: transparent;
+    border-color: $theme-secondary;
+    color: #ffffff;
+    @include button-basic-padding();
+}
+
+.card {
+    width: $card-width;
+    height: 256px;
+    background: #FFFFFF;
+    box-shadow: 4px 6px 7px #28399040/* 0px 20px 40px rgba(40, 57, 144, 0.25) */;
+    border-radius: $border-radius-large;
+    border: 0;
+}
+
+.card-title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 200%;
+    color: $theme-primary;
+}
+
+.mdc-drawer--temporary {
+    z-index: 5000;
+}

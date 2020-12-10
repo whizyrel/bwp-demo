@@ -1,0 +1,52 @@
+@mixin transparent-nav {
+  background-color: transparent;
+}
+
+@mixin app-nav-header {
+    height: 56px;
+
+    @media (min-width: 577px) {
+        height: 64px;
+    }
+}
+
+@import '../../styles.scss';
+
+/* TODO use media queries in component */
+header {
+    @include transparent-nav();
+    @include app-nav-header();
+    position: fixed;
+    top: 0;
+    z-index: 4500;
+
+    section {
+        mat-icon {
+            cursor: pointer;
+        }
+
+        &.app-nav--links {
+            a {
+                font-size: 14px;
+            }
+        }
+    }
+
+    @media (max-width: 576px) {
+        & section.app-nav--links {
+            display: none!important;
+        }
+    }
+
+    @media (min-width: 567px) {
+        section {
+            mat-icon {
+                display: none;
+            }
+        }
+    }
+}
+
+.app-side-drawer {
+    color: $theme-primary;
+}
