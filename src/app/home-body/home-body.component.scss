@@ -13,7 +13,8 @@ $page-top-padding-sm: /* 56px */0px;
     .app-home--intro__carousel {
         min-height: 80vh;
         background-image: url('/assets/images/texture-1-red-shade.svg');
-        @include responsive-image-contain();
+        // @include responsive-background-cover();
+        background-repeat: no-repeat;
 
         .app--home-intro--main-text {
             line-height: 1.2;
@@ -62,6 +63,10 @@ $page-top-padding-sm: /* 56px */0px;
 
     .app-home-testimonials {
         background-color: $theme-secondary--light;
+        background-image: url('/assets/images/texture-right-partial.svg');
+        background-clip: border-box;
+        background-repeat: no-repeat;
+        background-position: 90% bottom;
         font-family: "Quicksand", sans-serif;
 
         .card {
@@ -94,6 +99,13 @@ $page-top-padding-sm: /* 56px */0px;
 
     .app-home-clients--section {
         font-family: "Quicksand", sans-serif;
+        background-image: url('/assets/images/stars-array-loose.svg');
+        // background-image: url('/assets/images/stars-background.svg');
+        background-repeat: no-repeat;
+        // background-repeat: repeat no-repeat;
+        background-position: center;
+        // background-position: 95% bottom;
+        background-clip: border-box;
 
         img {
             @include responsive-image-contain();
@@ -107,9 +119,22 @@ $page-top-padding-sm: /* 56px */0px;
         }
     }
 
+    #contact-us {
+        background-image: url('/assets/images/texture-top-partial.svg'), url('/assets/images/texture-bottom-partial.svg');
+        background-repeat: no-repeat, no-repeat;
+        background-clip: border-box;
+        background-position: left top, right bottom;
+    }
+
     .app-home-footer {
         font-family: "Quicksand", sans-serif;
         background-color: $theme-primary-light;
+        /* either first or second texture */
+        // background-image: url('/assets/images/texture-top-partial.svg'), url('/assets/images/texture-bottom-partial.svg');
+        background-image: url('/assets/images/stars-array-specials.svg');
+        background-repeat: repeat no-repeat;
+        background-clip: border-box;
+        background-position: center;
 
         .app-footer-copyright {
             background-color: $theme-primary-dark;
@@ -154,14 +179,22 @@ $page-top-padding-sm: /* 56px */0px;
         }
     }
 
+    // .app-home-clients--section {
+    //     // background-size: 40%;
+    // }
+
     #contact-us {
         h3 {
             font-size: 20px;
         }
     }
 
-    .app-home-footer--social-links {
-        justify-content: center;
+    .app-home-footer {
+        background-repeat: repeat!important;
+
+        .app-home-footer--social-links {
+            justify-content: center;
+        }
     }
 }
 
