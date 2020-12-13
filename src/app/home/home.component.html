@@ -1,0 +1,42 @@
+<div class="d-flex w-100 flex-column">
+    <header class="d-flex w-100 flex-row app-nav-header">
+        <section class="d-flex h-100 p-2">
+            <mat-icon class="my-auto mr-2" (click)="drawerState = !drawerState">menu</mat-icon>
+            <!-- TODO use bwp logo -->
+            <img src="assets/images/logo-md.png" alt="logo" class="pl-3 h-75 my-auto">
+        </section>
+        <section class="d-flex h-100 p-2 mx-auto app-nav--links"[style.font-family]="'Quicksand'">
+            <a class="text-secondary my-auto ml-auto font-weight-bold" href="#rooms" target="_self">Rooms</a>
+            <a class="text-secondary my-auto ml-5 font-weight-bold" href="#contact-us" target="_self">Contact Us</a>
+            <a class="text-secondary my-auto ml-5 mr-auto font-weight-bold" href="#clients" target="_self">Clients</a>
+            <a class="text-secondary my-auto ml-5 mr-auto font-weight-bold" href="#experiences" target="_self">Shared Experiences</a>
+        </section>
+    </header>
+    
+    <aside [mdcDrawerContainer]="'temporary'" [open]="drawerState" (click)="drawerState = !drawerState">
+        <nav mdcDrawer>
+            <div mdcDrawerHeader *ngIf="true">
+                <div mdcDrawerHeaderContent>
+                    <!-- TODO use bwp logo -->
+                    <span class="font-weight-bold app-side-drawer">Best Western Plus</span>
+                </div>
+            </div>
+            <div mdcDrawerContent mdcListGroup
+                style="background-image: url('/assets/images/nav_nachos@2x.png'); background-clip: border-box; background-size: cover; background-position: center;">
+                <nav mdcList>
+                    <a mdcListItem href="#rooms">
+                        <i mdcListItemGraphic class="material-icons" aria-hidden="true">weekend</i>Rooms
+                    </a>
+                    <a mdcListItem href="#contact-us">
+                        <i mdcListItemGraphic class="material-icons" aria-hidden="true">email</i>Contact Us
+                    </a>
+                    <a mdcListItem href="#experiences">
+                        <i mdcListItemGraphic class="material-icons" aria-hidden="true">email</i>Shared Experiences
+                    </a>
+                </nav>
+            </div>
+        </nav>
+    </aside>
+    
+    <router-outlet></router-outlet>
+</div>
