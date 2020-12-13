@@ -1,13 +1,11 @@
-<div class="d-flex w-100 flex-column app-home--container">
+<div appHeaderBackground class="d-flex w-100 flex-column app-home--container">
     <!-- large image -->
     <!-- possible carousel info on it -->
-    <div class="d-flex flex-column w-100 pt-5 container">
+    <div class="d-flex flex-column w-100 pt-5 container app-home--intro">
         <div class="row app-home--intro__carousel">
-            <div class="col-md-5 d-flex py-5 flex-column">
+            <div class="col-md-12 col-lg-5 d-flex py-5 flex-column">
                 <!-- TODO carousel buttons -->
-                <!-- TODO add textures to background -->
                 <!-- TODO add bounce effect to intro images -->
-                <!-- add social media icons -->
                 <h2 class="text-left mt-auto font-weight-bold text-dark app--home-intro--main-text">Best Western Plus,</h2>
                 <h2 class="text-left mb-5 font-weight-bold text-dark app--home-intro--main-text">Nigeria</h2>
                 <span class="text-wrap text-secondary" style="font-family: Quicksand;">
@@ -18,11 +16,11 @@
                     consequat.
                 </span>
 
-                <button class="d-flex flex-row mt-5 mb-auto button button-filled py-3" color="primary">
+                <button matRipple class="d-flex flex-row mt-5 mb-auto button button-filled py-3" color="primary">
                     <span class="m-auto font-weight-bold text-uppercase">Quick Tour</span>
                 </button>
             </div>
-            <div class="col-md-7 d-flex flex-column py-5 px-2 app-home--intro--carousel_image">
+            <div class="col-md-12 col-lg-7 d-flex flex-column py-5 px-2 app-home--intro--carousel_image">
                 <img  class="d-flex w-100 m-auto" src="assets/images/rooms-1.jpg" alt="rooms-image">
                 <img  class="d-flex w-100 m-auto" src="assets/images/rooms-2.jpg" alt="rooms-image">
             </div>
@@ -36,38 +34,63 @@
 
             <!-- TODO add buttons to scroll image list on sm devices -->
             <div class="row mx-0 w-100 px-3">
-                <div class="col-md-3 d-flex app-rooms--image currsor-pointer" style="background-image: url('assets/images/rooms-3.jpg');">
-                    <div class="d-flex w-100 p-2 mt-auto" style="height: 48px; background-color: #00000066;">
+                <div (mouseover)="toggleOverlay('deluxe')"
+                    (mouseout)="toggleOverlay('deluxe')"
+                    class="col-md-3 d-flex app-rooms--image cursor-pointer" style="background-image: url('assets/images/rooms-3.jpg');">
+                    <div class="w-100 p-2 mt-auto" [ngClass]="{'d-flex': roomsOverlay.deluxe === true, 'd-none': roomsOverlay.deluxe === false}" style="height: 48px; background-color: #00000066;">
                         <span class="my-auto text-white">Deluxe Lite</span>
                         <button mat-button class="mr-2 ml-auto my-auto text-white" style="font-size: 13px;">View</button>
                     </div>
                 </div>
-                <div class="col-md-3 app-rooms--image currsor-pointer" style="background-image: url('assets/images/rooms-4.jpg');">
-                    <div class="d-flex w-100 p-2 mt-auto" style="height: 48px; background-color: #00000066;">
+                <div (mouseover)="toggleOverlay('mandela')"
+                    (mouseout)="toggleOverlay('mandela')" class="col-md-3 app-rooms--image cursor-pointer" style="background-image: url('assets/images/rooms-4.jpg');">
+                    <div
+                        [ngClass]="{'d-flex': roomsOverlay.mandela === true, 'd-none': roomsOverlay.mandela === false}"
+                        class="d-flex w-100 p-2 mt-auto" style="height: 48px; background-color: #00000066;">
                         <span class="my-auto text-white">Mandela Suite</span>
                         <button mat-button class="mr-2 ml-auto my-auto text-white" style="font-size: 13px;">View</button>
                     </div>
                 </div>
-                <div class="col-md-3 d-flex app-rooms--image currsor-pointer" style="background-image: url('assets/images/rooms-5.jpg');">
-                    <div class="d-flex w-100 p-2 mt-auto" style="height: 48px; background-color: #00000066;">
+                <div
+                    (mouseover)="toggleOverlay('vacation')"
+                    (mouseout)="toggleOverlay('vacation')"
+                    class="col-md-3 d-flex app-rooms--image cursor-pointer" style="background-image: url('assets/images/rooms-5.jpg');">
+                    <div
+                        [ngClass]="{'d-flex': roomsOverlay.vacation === true, 'd-none': roomsOverlay.vacation === false}"
+                        class="d-flex w-100 p-2 mt-auto" style="height: 48px; background-color: #00000066;">
                         <span class="my-auto text-white">Vacation Xtra</span>
                         <button mat-button class="mr-2 ml-auto my-auto text-white" style="font-size: 13px;">View</button>
                     </div>
                 </div>
-                <div class="col-md-3 app-rooms--image currsor-pointer" style="background-image: url('assets/images/rooms-6.jpg');">
-                    <div class="d-flex w-100 p-2 mt-auto" style="height: 48px; background-color: #00000066;">
+                <div
+                    (mouseover)="toggleOverlay('holiday')"
+                    (mouseout)="toggleOverlay('holiday')"
+                    class="col-md-3 app-rooms--image cursor-pointer" style="background-image: url('assets/images/rooms-6.jpg');">
+                    <div
+                        [ngClass]="{'d-flex': roomsOverlay.holiday === true, 'd-none': roomsOverlay.holiday === false}"
+                        class="d-flex w-100 p-2 mt-auto" style="height: 48px; background-color: #00000066;">
                         <span class="my-auto text-white">Holiday Lite</span>
                         <button mat-button class="mr-2 ml-auto my-auto text-white" style="font-size: 13px;">View</button>
                     </div>
                 </div>
-                <div class="col-md-6 d-flex col-sm-12 app-rooms--image currsor-pointer" style="background-image: url('assets/images/rooms-7.jpg');">
-                    <div class="d-flex w-100 p-2 mt-auto" style="height: 48px; background-color: #00000066;">
+                <div
+                    (mouseover)="toggleOverlay('executive')"
+                    (mouseout)="toggleOverlay('executive')"
+                    class="col-md-6 d-flex col-sm-12 app-rooms--image cursor-pointer" style="background-image: url('assets/images/rooms-7.jpg');">
+                    <div
+                        [ngClass]="{'d-flex': roomsOverlay.executive === true, 'd-none': roomsOverlay.executive === false}"
+                        class="d-flex w-100 p-2 mt-auto" style="height: 48px; background-color: #00000066;">
                         <span class="my-auto text-white">Executive Deluxe</span>
                         <button mat-button class="mr-2 ml-auto my-auto text-white" style="font-size: 13px;">View</button>
                     </div>
                 </div>
-                <div class="col-md-6 col-sm-12 app-rooms--image currsor-pointer" style="background-image: url('assets/images/rooms-8.jpg');">
-                    <div class="d-flex w-100 p-2 mt-auto" style="height: 48px; background-color: #00000066;">
+                <div
+                    (mouseover)="toggleOverlay('obama')"
+                    (mouseout)="toggleOverlay('obama')"
+                    class="col-md-6 col-sm-12 app-rooms--image cursor-pointer" style="background-image: url('assets/images/rooms-8.jpg');">
+                    <div
+                        [ngClass]="{'d-flex': roomsOverlay.obama === true, 'd-none': roomsOverlay.obama === false}"
+                        class="d-flex w-100 p-2 mt-auto" style="height: 48px; background-color: #00000066;">
                         <span class="my-auto text-white">Obama Exquisite</span>
                         <button mat-button class="mr-2 ml-auto my-auto text-white" style="font-size: 13px;">View</button>
                     </div>
@@ -75,6 +98,18 @@
             </div>
         </div>
     </div>
+
+    <!-- <div class="dflex w-100 mb-5 py-5">
+        <div class="container">
+            <iframe class="w-100" height="320px" src="https://www.youtube.com/embed/IUOvGRHUWS8" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            <video class="d-flex w-100" height="320px"
+                controls poster='assets/images/rooms-5.jpg'>
+                <source src="https://youtu.be/IUOvGRHUWS8" type="video/mp4">
+            </video>
+        </div>
+    </div> -->
 
     <div class="d-flex py-5 mt-5 w-100 app-home-testimonials" id="experiences">
         <div class="container d-flex flex-column">
@@ -197,11 +232,8 @@
     </div>
 
     <footer class="d-flex w-100 mt-5 app-home-footer">
-        <!-- TODO add textures -->
         <div class="row w-100 mx-0 pt-5">
             <div class="col-sm-12 col-md-4 px-4 py-5">
-                <!-- TODO add logo -->
-                <!-- <img src="https://bit.ly/396cleV" alt="logo-image" style="width: 96px; height: 64px;"> -->
                 <h5 class="font-weight-bold pl-4 text-white text-wrap" style="font-size: 24px; font-family: 'Noto Sans', sans-serif;">Best Western Plus, Nigeria</h5>
                 <div class="d-flex flex-row py-2 text-white text-wrap" style="font-size: 15px;">
                     <mat-icon class="mr-3">place</mat-icon>
@@ -218,8 +250,8 @@
                     <a class="my-auto text-white" href="mailto:mail@example.com?Subject=Inquiry" type="email">mail@example.com</a>
                 </div>
 
-                <button class="w-50 button mt-4 button-outline button-outline-secondary" color="secondary" style="box-shadow: 11px 9px 14px 1px #bb0404;">
-                    <a href="https://bestwestern.com" class="m-auto text-white">Bookings</a>
+                <button matRipple class="d-flex w-50 button mt-4 button-outline button-outline-secondary" color="secondary" style="box-shadow: 11px 9px 14px 1px #bb0404;">
+                    <a href="https://bestwestern.com" class="w-100 h-100 text-center text-white">Bookings</a>
                 </button>
             </div>
 

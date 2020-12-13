@@ -10,11 +10,17 @@ $page-top-padding-sm: /* 56px */0px;
     overflow-x: hidden;
     overflow-y: auto;
 
-    .app-home--intro__carousel {
-        min-height: 80vh;
+    .app-home--intro.container {
         background-image: url('/assets/images/texture-1-red-shade.svg');
         // @include responsive-background-cover();
         background-repeat: no-repeat;
+    }
+
+    .app-home--intro__carousel {
+        min-height: 80vh;
+        // background-image: url('/assets/images/texture-1-red-shade.svg');
+        // @include responsive-background-cover();
+        // background-repeat: no-repeat;
 
         .app--home-intro--main-text {
             line-height: 1.2;
@@ -148,16 +154,36 @@ $page-top-padding-sm: /* 56px */0px;
     }
 }
 
-@media (max-width: 575px) {
-    .app-home--intro__carousel {
-        .app--home-intro--main-text {
-            font-size: 2.25rem!important;
+@media (max-width: 767px) {
+    .app-home--container {
+        .app-home--intro__carousel {
+            flex-flow: column-reverse;
+
+            & > div.app-home--intro--carousel_image {
+                // padding-top: 0!important;
+                padding-bottom: 0!important;
+                
+                & > img {
+                    width: 80%!important;
+                    height: 240px!important;
+                    
+                    &:nth-child(2n) {
+                        margin-top: -120px!important;
+                        margin-right: -4px!important;
+                    }
+                }
+            }
         }
     }
+}
 
-    .app-home--intro--carousel_image {
-        img {
-            width: 80%!important;
+@media (max-width: 575px) {
+    .app-home--container {
+        .app-home--intro__carousel {
+            .app--home-intro--main-text {
+                font-size: 2.25rem!important;
+            }
+            // here
         }
     }
 
@@ -178,10 +204,6 @@ $page-top-padding-sm: /* 56px */0px;
             height: fit-content!important;
         }
     }
-
-    // .app-home-clients--section {
-    //     // background-size: 40%;
-    // }
 
     #contact-us {
         h3 {

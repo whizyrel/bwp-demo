@@ -6,11 +6,12 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '@blox/material';
 import { HomeComponent } from './home/home.component';
-import { MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule } from '@angular/material';
+import { MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, MatRippleModule } from '@angular/material';
 import { HomeBodyComponent } from './home-body/home-body.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MailboxComponent } from './mailbox/mailbox.component';
 import { SocialMediaIconsComponent } from './social-media-icons/social-media-icons.component';
+import { HeaderBackgroundDirective } from './directives/header-background.directive';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SocialMediaIconsComponent } from './social-media-icons/social-media-ico
     HomeComponent,
     HomeBodyComponent,
     MailboxComponent,
-    SocialMediaIconsComponent
+    SocialMediaIconsComponent,
+    HeaderBackgroundDirective
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,8 @@ import { SocialMediaIconsComponent } from './social-media-icons/social-media-ico
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatRippleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

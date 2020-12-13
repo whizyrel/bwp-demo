@@ -1,37 +1,37 @@
 <div class="d-flex w-100 flex-column">
-    <header class="d-flex w-100 flex-row app-nav-header">
+    <header class="d-flex w-100 flex-row app-nav-header" [ngClass]="{'app-nav-header--scrolled': headerBackgroundStatus === true}">
         <section class="d-flex h-100 p-2">
             <mat-icon class="my-auto mr-2" (click)="drawerState = !drawerState">menu</mat-icon>
-            <!-- TODO use bwp logo -->
             <img src="assets/images/logo-md.png" alt="logo" class="pl-3 h-75 my-auto">
         </section>
         <section class="d-flex h-100 p-2 mx-auto app-nav--links"[style.font-family]="'Quicksand'">
-            <a class="text-secondary my-auto ml-auto font-weight-bold" href="#rooms" target="_self">Rooms</a>
-            <a class="text-secondary my-auto ml-5 font-weight-bold" href="#contact-us" target="_self">Contact Us</a>
-            <a class="text-secondary my-auto ml-5 mr-auto font-weight-bold" href="#clients" target="_self">Clients</a>
-            <a class="text-secondary my-auto ml-5 mr-auto font-weight-bold" href="#experiences" target="_self">Shared Experiences</a>
+            <a matRipple class="text-secondary my-auto ml-auto font-weight-bold" href="#rooms" target="_self">Rooms</a>
+            <a matRipple class="text-secondary my-auto ml-5 font-weight-bold" href="#contact-us" target="_self">Contact Us</a>
+            <a matRipple class="text-secondary my-auto ml-5 mr-auto font-weight-bold" href="#clients" target="_self">Clients</a>
+            <a matRipple class="text-secondary my-auto ml-5 mr-auto font-weight-bold" href="#experiences" target="_self">Shared Experiences</a>
         </section>
     </header>
     
     <aside [mdcDrawerContainer]="'temporary'" [open]="drawerState" (click)="drawerState = !drawerState">
         <nav mdcDrawer>
-            <div mdcDrawerHeader *ngIf="true">
-                <div mdcDrawerHeaderContent>
-                    <!-- TODO use bwp logo -->
-                    <span class="font-weight-bold app-side-drawer">Best Western Plus</span>
-                </div>
+            <div class="d-flex w-100 px-3" style="height: 64px;">
+                <!-- TODO use bwp logo -->
+                <span class="d-flex my-auto font-weight-bold app-side-drawer">Best Western Plus, Nigeria</span>
             </div>
             <div mdcDrawerContent mdcListGroup
                 style="background-image: url('/assets/images/nav_nachos@2x.png'); background-clip: border-box; background-size: cover; background-position: center;">
                 <nav mdcList>
-                    <a mdcListItem href="#rooms">
-                        <i mdcListItemGraphic class="material-icons" aria-hidden="true">weekend</i>Rooms
+                   <a mdcListItem (click)="navigateTo('rooms')">
+                        <i color="warn" mdcListItemGraphic class="material-icons" aria-hidden="true">weekend</i>Rooms
                     </a>
-                    <a mdcListItem href="#contact-us">
-                        <i mdcListItemGraphic class="material-icons" aria-hidden="true">email</i>Contact Us
+                    <a mdcListItem (click)="navigateTo('contact-us')">
+                        <i color="warn" mdcListItemGraphic class="material-icons" aria-hidden="true">email</i>Contact Us
                     </a>
-                    <a mdcListItem href="#experiences">
-                        <i mdcListItemGraphic class="material-icons" aria-hidden="true">email</i>Shared Experiences
+                    <a mdcListItem (click)="navigateTo('experiences')">
+                        <i color="warn" mdcListItemGraphic class="material-icons" aria-hidden="true">history_edu</i>Shared Experiences
+                    </a>
+                    <a mdcListItem (click)="navigateTo('clients')">
+                        <i color="warn" mdcListItemGraphic class="material-icons" aria-hidden="true">business</i>Clients
                     </a>
                 </nav>
             </div>
