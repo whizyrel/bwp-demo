@@ -206,24 +206,24 @@
             <form class="d-flex w-100 flex-column" [formGroup]="form">
                 <mat-form-field appearance="outline" color="accent">
                     <mat-label>Name</mat-label>
-                    <input matInput placeholder="Olukotun Chinedu Mohammed" required>
+                    <input matInput formControlName="name" placeholder="Olukotun Chinedu Mohammed" required>
                     <mat-icon color="warn" matSuffix>person</mat-icon>
                 </mat-form-field>
                 <mat-form-field appearance="outline" color="accent">
                     <mat-label>Email</mat-label>
-                    <input matInput placeholder="name@example.com" required>
+                    <input matInput formControlName="email" placeholder="name@example.com" required>
                     <mat-icon color="warn" matSuffix>mail</mat-icon>
                 </mat-form-field>
                 <mat-form-field appearance="outline" color="accent">
                     <mat-label>Subject</mat-label>
-                    <input matInput placeholder="Room Booking">
+                    <input matInput formControlName="subject" placeholder="Room Booking" required>
                     <mat-icon color="warn" matSuffix>subject</mat-icon>
                 </mat-form-field>
                 <mat-form-field appearance="outline" color="accent">
-                    <textarea rows="12" matInput placeholder="What would you have us do you for?" required></textarea>
+                    <textarea formControlName="message" rows="12" matInput placeholder="What would you have us do you for?" required></textarea>
                 </mat-form-field>
 
-                <button mat-raised-button class="py-2 w-50 mx-auto" color="warn">
+                <button (click)="submitMessage()" [disabled]="form.invalid === true" mat-raised-button class="py-2 w-50 mx-auto" color="warn">
                     <mat-icon class="my-auto mr-3" color="basic" [inline]="true">campaign</mat-icon>
                     <span class="my-auto">Submit</span>
                 </button>

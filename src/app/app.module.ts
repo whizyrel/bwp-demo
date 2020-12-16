@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '@blox/material';
 import { HomeComponent } from './home/home.component';
-import { MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, MatRippleModule } from '@angular/material';
+import { MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, MatRippleModule, MatSnackBarModule } from '@angular/material';
 import { HomeBodyComponent } from './home-body/home-body.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MailboxComponent } from './mailbox/mailbox.component';
@@ -32,7 +32,7 @@ import { HeaderBackgroundDirective } from './directives/header-background.direct
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatRippleModule
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
