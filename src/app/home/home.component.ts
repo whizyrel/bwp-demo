@@ -10,6 +10,7 @@ import { headerSubject } from '../directives/header-background.directive';
 export class HomeComponent implements OnInit {
   public drawerState: boolean = false as boolean;
   public headerBackgroundStatus: boolean;
+  private activatedComponent;
 
   constructor(private router: Router) { }
 
@@ -19,12 +20,29 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  public onActivate(component): void {
+    this.activatedComponent = component;
+  }
+
+  public routeToHome(): void {
+    // scroll into view if at /    
+    if (/#[a-z]{1,}/gi.test(this.router.url) === true) {
+      this.activatedComponent.scrollToTop();
+    } else {
+      this.router.navigate(['/']);
+    }
+  }
+
   public openDrawer(): void {
     this.drawerState = !this.drawerState;
   }
 
   public navigateTo(path: string): void {
     // possible add central loading progress bar
-    this.router.navigate(['/'], {preserveFragment: false, fragment: path});
+    if (path !== 'home') {
+      this.router.navigate(['/'], {preserveFragment: false, fragment: path});
+    } else {
+      this.activatedComponent.scrollToTop();
+    }
   }
 }
