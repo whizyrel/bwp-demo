@@ -14,7 +14,7 @@ export class HeaderBackgroundDirective {
   ngOnInit(): void {
     this.cur = this.el.nativeElement.getBoundingClientRect().top;
 
-    interval(1000)
+    interval(200)
       .subscribe(() => {
         if (this.cur !== this.el.nativeElement.getBoundingClientRect().top) {
           this.cur = this.el.nativeElement.getBoundingClientRect().top;
