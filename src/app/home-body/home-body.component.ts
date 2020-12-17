@@ -1,5 +1,9 @@
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
+
+import { HeaderBackgroundDirective } from '../directives/header-background.directive';
 
 @Component({
   selector: 'app-home-body',
@@ -11,6 +15,7 @@ export class HomeBodyComponent implements OnInit {
   public roomsOverlay: { [key in string]: boolean } = {
     deluxe: false, mandela: false, obama: false, holiday: false, vacation: false, executive: false
   };
+  @ViewChild(HeaderBackgroundDirective, {static: true}) private el;
 
   constructor(private fb: FormBuilder, private snackbar: MatSnackBar, private router: Router) { }
 
@@ -21,6 +26,14 @@ export class HomeBodyComponent implements OnInit {
       subject: new FormControl(null, [Validators.required]),
       message: new FormControl(null, [Validators.required])
     });
+  }
+
+  public scrollToTop(): void {
+    this.el.el.nativeElement.scrollIntoView(true);
+  }
+
+  public viewRoom(type: string) {
+    this.router.navigate(['/', type]);
   }
 
   public submitMessage(): void {

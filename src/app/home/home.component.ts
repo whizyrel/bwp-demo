@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
     if (path !== 'home') {
       this.router.navigate(['/'], {preserveFragment: false, fragment: path});
     } else {
-      this.activatedComponent.scrollToTop();
+      this.routeToHome();
     }
   }
 }
