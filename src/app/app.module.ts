@@ -13,6 +13,7 @@ import { MailboxComponent } from './mailbox/mailbox.component';
 import { SocialMediaIconsComponent } from './social-media-icons/social-media-icons.component';
 import { HeaderBackgroundDirective } from './directives/header-background.directive';
 import { RoomsViewComponent } from './rooms-view/rooms-view.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RoomsViewComponent } from './rooms-view/rooms-view.component';
     MailboxComponent,
     SocialMediaIconsComponent,
     HeaderBackgroundDirective,
-    RoomsViewComponent
+    RoomsViewComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
