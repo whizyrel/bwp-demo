@@ -12,15 +12,11 @@ $page-top-padding-sm: /* 56px */0px;
 
     .app-home--intro.container {
         background-image: url('/assets/images/texture-1-red-shade.svg');
-        // @include responsive-background-cover();
         background-repeat: no-repeat;
     }
 
     .app-home--intro__carousel {
         min-height: 80vh;
-        // background-image: url('/assets/images/texture-1-red-shade.svg');
-        // @include responsive-background-cover();
-        // background-repeat: no-repeat;
 
         .app--home-intro--main-text {
             line-height: 1.2;
@@ -95,7 +91,8 @@ $page-top-padding-sm: /* 56px */0px;
             border-radius: 50%;
             border-style: solid;
             border-width: 2px;
-            border-color: #ffffff;
+            border-color: transparent;
+            background-color: $theme-secondary--light;
 
             img {
                 @include responsive-image-cover();
@@ -233,4 +230,38 @@ $page-top-padding-sm: /* 56px */0px;
     .app-home-footer--social-links {
         flex-direction: column;
     }
+}
+
+.animated {
+  -webkit-animation-duration: .5s;
+  animation-duration: .5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes bounce {
+  0%, 100% {
+    -webkit-transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(-5px);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.bounce {
+  -webkit-animation-name: bounce;
+  animation-name: bounce;
 }

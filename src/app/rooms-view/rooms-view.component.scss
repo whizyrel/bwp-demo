@@ -1,0 +1,214 @@
+$page-top-padding-md: 64px/* 0px */;
+$page-top-padding-sm: 56px/* 0px */;
+
+.app-rooms-view--viewer {
+    padding-top: $page-top-padding-sm;
+
+    .app-rooms-view--viewer-image-pane {
+        img {
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    @media (min-width: 567px) {
+        max-height: 100%;
+        padding-top: $page-top-padding-md;
+
+        .app-rooms-view--viewer-image-pane {
+            height: 100%;
+
+            img {
+                // height: 100%;
+                max-height: 100%;
+            }
+
+            .app-rooms-view--viewer-image--control {
+                border-radius: 50%;
+                background-color: #ff000061;
+                width: 48px;
+                height: 48px;
+                cursor: pointer
+            }
+        }
+
+        .app-rooms-view--comments {
+            display: none!important;
+        }
+
+        // .app-rooms-view--viewer-details-pane {
+        //     // overflow: hidden auto;
+        //     // height: auto;
+        // }
+
+        .app-rooms-view--viewer-image-pane,
+        .app-rooms-view--viewer-details-pane {
+            min-height: calc(100vh - #{$page-top-padding-md});
+        }
+    }
+
+    @media (max-width: 575px) {
+        & {
+            .app-rooms-view--viewer-image-pane,
+            .app-rooms-view--viewer-details-pane {
+                max-width: 100%!important;
+            }
+
+            .app-rooms-view--viewer-image-pane {
+                height: 420px;
+                max-height: 50%;
+
+                img {
+                    margin-top: 0!important;
+                    margin-bottom: 0!important;
+                }
+
+                .app-rooms-view--viewer-image--control {
+                    border-radius: 50%;
+                    background-color: #ff000061;
+                    width: fit-content;
+                    height: fit-content;
+                    cursor: pointer;
+                }
+            }
+
+            .app-rooms-view--viewer-details-pane {
+                // background: #c5c5c50d;
+                // height: 100%;
+                padding-top: 2.5rem!important;
+                padding-bottom: 2.5rem!important;
+
+                .app-rooms-view--alternate-comments--director {
+                    display: none;
+                }
+
+                .app-rooms-view--comments {
+                    display: flex!important;
+                }
+            }
+
+            .app-rooms-view--alternate-comments {
+                display: none;
+            }
+        }
+    }
+
+    // @media (min-width: 767px) {
+    //     .app-rooms-view--viewer-image-pane,
+    //     .app-rooms-view--viewer-details-pane {
+    //         min-height: calc(100vh - #{$page-top-padding-md});
+    //     }
+    // }
+
+    @media (max-width: 767px) and (orientation: landscape) {
+        .app-rooms-view--alternate-comments--director,
+        .app-rooms-view--alternate-comments {
+            display: none;
+        }
+
+        .app-rooms-view--comments {
+            display: flex!important;
+        }
+    }
+
+    @media (min-width: 768px) and (min-height: 992px) {
+        & {
+            // overflow: hidden auto;
+            // flex-direction: column!important;
+            height: fit-content;
+
+            .app-rooms-view--viewer-image-pane,
+            .app-rooms-view--viewer-details-pane {
+                // flex-basis: 100%!important;
+                max-width: 100%!important;
+                min-height: fit-content;
+            }
+
+            .app-rooms-view--viewer-image-pane {
+                height: 50%;
+                // height: fit-content;
+                // max-height: 50%;
+            }
+
+            .app-rooms-view--viewer-details-pane {
+                // background: #c5c5c50d;
+                // height: 100%;
+                padding-top: 2.5rem!important;
+                padding-bottom: 2.5rem!important;
+
+                .app-rooms-view--alternate-comments--director {
+                    display: none;
+                }
+
+                .app-rooms-view--comments {
+                    display: flex!important;
+                }
+            }
+
+            .app-rooms-view--alternate-comments {
+                display: none;
+            }
+        }
+    }
+}
+
+.animated {
+  -webkit-animation-duration: .5s;
+  animation-duration: .5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+  -webkit-animation-iteration-count: 1;
+}
+
+@-webkit-keyframes slide_left {
+  0% {
+    margin-left: 100%;
+  }
+
+  100% {
+    margin-left: 0;
+  }
+}
+
+@keyframes slide_left {
+  0% {
+    margin-left: 100%;
+  }
+
+  100% {
+    margin-left: 0;
+  }
+}
+
+.slide_left {
+  -webkit-animation-name: slide_left;
+  animation-name: slide_left;
+}
+
+@-webkit-keyframes slide_right {
+  0% {
+    margin-right: 0;
+  }
+
+  100% {
+    margin-right: 100%;
+  }
+}
+
+@keyframes slide_right {
+  0% {
+    margin-right: 0;
+  }
+
+  100% {
+    margin-right: 100%;
+  }
+}
+
+.slide_right {
+  -webkit-animation-name: slide_right;
+  animation-name: slide_right;
+}

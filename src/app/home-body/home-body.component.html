@@ -5,7 +5,6 @@
         <div class="row app-home--intro__carousel">
             <div class="col-md-12 col-lg-5 d-flex py-5 flex-column">
                 <!-- TODO carousel buttons -->
-                <!-- TODO add bounce effect to intro images -->
                 <h2 class="text-left mt-auto font-weight-bold text-dark app--home-intro--main-text">Best Western Plus,</h2>
                 <h2 class="text-left mb-5 font-weight-bold text-dark app--home-intro--main-text">Nigeria</h2>
                 <span class="text-wrap text-secondary" style="font-family: Quicksand;">
@@ -21,8 +20,8 @@
                 </button>
             </div>
             <div class="col-md-12 col-lg-7 d-flex flex-column py-5 px-2 app-home--intro--carousel_image">
-                <img  class="d-flex w-100 m-auto" src="assets/images/rooms-1.jpg" alt="rooms-image">
-                <img  class="d-flex w-100 m-auto" src="assets/images/rooms-2.jpg" alt="rooms-image">
+                <img class="d-flex w-100 m-auto animated bounce" src="assets/images/rooms-1.jpg" alt="rooms-image">
+                <img class="d-flex w-100 m-auto animated bounce" src="assets/images/rooms-2.jpg" alt="rooms-image">
             </div>
         </div>
     </div>
@@ -39,7 +38,8 @@
                     class="col-md-3 d-flex app-rooms--image cursor-pointer" style="background-image: url('assets/images/rooms-3.jpg');">
                     <div class="w-100 p-2 mt-auto" [ngClass]="{'d-flex': roomsOverlay.deluxe === true, 'd-none': roomsOverlay.deluxe === false}" style="height: 48px; background-color: #00000066;">
                         <span class="my-auto text-white">Deluxe Lite</span>
-                        <button mat-button class="mr-2 ml-auto my-auto text-white" style="font-size: 13px;">View</button>
+                        <button mat-button class="mr-2 ml-auto my-auto text-white" style="font-size: 13px;"
+                            (click)="viewRoom('deluxe-lite')">View</button>
                     </div>
                 </div>
                 <div (mouseover)="toggleOverlay('mandela')"
@@ -48,7 +48,8 @@
                         [ngClass]="{'d-flex': roomsOverlay.mandela === true, 'd-none': roomsOverlay.mandela === false}"
                         class="d-flex w-100 p-2 mt-auto" style="height: 48px; background-color: #00000066;">
                         <span class="my-auto text-white">Mandela Suite</span>
-                        <button mat-button class="mr-2 ml-auto my-auto text-white" style="font-size: 13px;">View</button>
+                        <button mat-button class="mr-2 ml-auto my-auto text-white" style="font-size: 13px;"
+                            (click)="viewRoom('mandela-suite')">View</button>
                     </div>
                 </div>
                 <div
@@ -59,7 +60,8 @@
                         [ngClass]="{'d-flex': roomsOverlay.vacation === true, 'd-none': roomsOverlay.vacation === false}"
                         class="d-flex w-100 p-2 mt-auto" style="height: 48px; background-color: #00000066;">
                         <span class="my-auto text-white">Vacation Xtra</span>
-                        <button mat-button class="mr-2 ml-auto my-auto text-white" style="font-size: 13px;">View</button>
+                        <button mat-button class="mr-2 ml-auto my-auto text-white" style="font-size: 13px;"
+                            (click)="viewRoom('vacation-extra')">View</button>
                     </div>
                 </div>
                 <div
@@ -70,7 +72,8 @@
                         [ngClass]="{'d-flex': roomsOverlay.holiday === true, 'd-none': roomsOverlay.holiday === false}"
                         class="d-flex w-100 p-2 mt-auto" style="height: 48px; background-color: #00000066;">
                         <span class="my-auto text-white">Holiday Lite</span>
-                        <button mat-button class="mr-2 ml-auto my-auto text-white" style="font-size: 13px;">View</button>
+                        <button mat-button class="mr-2 ml-auto my-auto text-white" style="font-size: 13px;"
+                            (click)="viewRoom('holiday-lite')">View</button>
                     </div>
                 </div>
                 <div
@@ -81,7 +84,8 @@
                         [ngClass]="{'d-flex': roomsOverlay.executive === true, 'd-none': roomsOverlay.executive === false}"
                         class="d-flex w-100 p-2 mt-auto" style="height: 48px; background-color: #00000066;">
                         <span class="my-auto text-white">Executive Deluxe</span>
-                        <button mat-button class="mr-2 ml-auto my-auto text-white" style="font-size: 13px;">View</button>
+                        <button mat-button class="mr-2 ml-auto my-auto text-white" style="font-size: 13px;"
+                            (click)="viewRoom('executive-deluxe')">View</button>
                     </div>
                 </div>
                 <div
@@ -92,7 +96,8 @@
                         [ngClass]="{'d-flex': roomsOverlay.obama === true, 'd-none': roomsOverlay.obama === false}"
                         class="d-flex w-100 p-2 mt-auto" style="height: 48px; background-color: #00000066;">
                         <span class="my-auto text-white">Obama Exquisite</span>
-                        <button mat-button class="mr-2 ml-auto my-auto text-white" style="font-size: 13px;">View</button>
+                        <button mat-button class="mr-2 ml-auto my-auto text-white" style="font-size: 13px;"
+                            (click)="viewRoom('obama-exquisite')">View</button>
                     </div>
                 </div>
             </div>
@@ -100,6 +105,7 @@
     </div>
 
     <!-- <div class="dflex w-100 mb-5 py-5">
+        most likely used for bwpi intro image
         <div class="container">
             <iframe class="w-100" height="320px" src="https://www.youtube.com/embed/IUOvGRHUWS8" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -116,66 +122,60 @@
             <h5 class="mb-4 mx-auto text-center w-75 text-dark">Awesome Experiences of our guests</h5>
 
             <div class="d-flex row mx-0 flex-wrap justify-content-evenly pb-5 align-items-center" style="overflow-y: hidden; overflow-x: auto; padding-top: 6.5rem;">
-                <!-- <div class="col-sm-6 col-md-4 d-flex"> -->
-                    <div class="d-flex w-100 card px-3 py-1">
-                        <div class="d-flex mx-auto mb-3 position-relative app-home-testimonial--image" style="margin-top: -98px; box-shadow: 0px 20px 40px rgba(40, 57, 144, 0.25);">
-                            <img class="w-100 h-100" src="assets/svgs/avatars/testifier-female.svg" alt="testifier-image">
-                        </div>
-                        <h5 class="d-flex card-title text-secondary text-center"style="font-size: 16px;">Haruna Ishola Ibidapo</h5>
-                        <div class="d-flex flex-row mb-3">
-                            <mat-icon color="warn">star_rate</mat-icon>
-                            <mat-icon color="warn">star_rate</mat-icon>
-                            <mat-icon color="warn">star_rate</mat-icon>
-                            <mat-icon color="warn">star_rate</mat-icon>
-                            <mat-icon>star_rate</mat-icon>
-                        </div>
-                        <div class="d-flex flex-column">
-                            <mat-icon class="mx-auto" color="primary" style="transform: rotate(180deg);">format_quote</mat-icon>
-                            <span class="my-auto px-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
-                        </div>
+                <div class="d-flex w-100 card px-3 py-1">
+                    <div class="d-flex mx-auto mb-3 position-relative app-home-testimonial--image" style="margin-top: -98px; box-shadow: 0px 20px 40px rgba(40, 57, 144, 0.25);">
+                        <img class="w-100 h-100" src="assets/svgs/avatars/testifier-female.svg" alt="testifier-image">
                     </div>
-                <!-- </div> -->
-                <!-- <div class="col-sm-6 col-md-4 d-flex"> -->
-                    <div class="d-flex w-100 card px-3 py-1">
-                        <div class="d-flex mx-auto mb-3 position-relative app-home-testimonial--image"
-                            style="margin-top: -98px; box-shadow: 0px 20px 40px rgba(40, 57, 144, 0.25);">
-                            <img class="w-100 h-100" src="assets/svgs/avatars/testifier-male.svg" alt="testifier-image">
-                        </div>
-                        <h5 class="d-flex card-title text-secondary text-center" style="font-size: 16px;">Ikechukwu Azeez Olurunfemi</h5>
-                        <div class="d-flex flex-row mb-3">
-                            <mat-icon color="warn">star_rate</mat-icon>
-                            <mat-icon color="warn">star_rate</mat-icon>
-                            <mat-icon color="warn">star_rate</mat-icon>
-                            <mat-icon color="warn">star_rate</mat-icon>
-                            <mat-icon>star_rate</mat-icon>
-                        </div>
-                        <div class="d-flex flex-column">
-                            <mat-icon class="mx-auto" color="primary" style="transform: rotate(180deg);">format_quote</mat-icon>
-                            <span class="my-auto px-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
-                        </div>
+                    <h5 class="d-flex card-title text-secondary text-center"style="font-size: 16px;">Haruna Ishola Ibidapo</h5>
+                    <div class="d-flex flex-row mb-3">
+                        <mat-icon color="warn">star_rate</mat-icon>
+                        <mat-icon color="warn">star_rate</mat-icon>
+                        <mat-icon color="warn">star_rate</mat-icon>
+                        <mat-icon color="warn">star_rate</mat-icon>
+                        <mat-icon>star_rate</mat-icon>
                     </div>
-                <!-- </div> -->
-                <!-- <div class="col-sm-6 col-md-4 d-flex"> -->
-                    <div class="d-flex w-100 card px-3 py-1">
-                        <div class="d-flex mx-auto mb-3 position-relative app-home-testimonial--image"
-                            style="margin-top: -98px; box-shadow: 0px 20px 40px rgba(40, 57, 144, 0.25);">
-                            <img class="w-100 h-100" src="assets/svgs/avatars/testifier-female-2.svg" alt="testifier-image">
-                        </div>
-                        <h5 class="d-flex card-title text-secondary text-center" style="font-size: 16px;">Rebecca Brown Hillux</h5>
-                        <div class="d-flex flex-row mb-3">
-                            <mat-icon color="warn">star_rate</mat-icon>
-                            <mat-icon color="warn">star_rate</mat-icon>
-                            <mat-icon color="warn">star_rate</mat-icon>
-                            <mat-icon color="warn">star_rate</mat-icon>
-                            <mat-icon>star_rate</mat-icon>
-                        </div>
-                        <div class="d-flex flex-column">
-                            <mat-icon class="mx-auto" color="primary" style="transform: rotate(180deg);">format_quote</mat-icon>
-                            <span class="my-auto px-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.</span>
-                        </div>
+                    <div class="d-flex flex-column">
+                        <mat-icon class="mx-auto" color="primary" style="transform: rotate(180deg);">format_quote</mat-icon>
+                        <span class="my-auto px-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
                     </div>
-                <!-- </div> -->
+                </div>
+                <div class="d-flex w-100 card px-3 py-1">
+                    <div class="d-flex mx-auto mb-3 position-relative app-home-testimonial--image"
+                        style="margin-top: -98px; box-shadow: 0px 20px 40px rgba(40, 57, 144, 0.25);">
+                        <img class="w-100 h-100" src="assets/svgs/avatars/testifier-male.svg" alt="testifier-image">
+                    </div>
+                    <h5 class="d-flex card-title text-secondary text-center" style="font-size: 16px;">Ikechukwu Azeez Olurunfemi</h5>
+                    <div class="d-flex flex-row mb-3">
+                        <mat-icon color="warn">star_rate</mat-icon>
+                        <mat-icon color="warn">star_rate</mat-icon>
+                        <mat-icon color="warn">star_rate</mat-icon>
+                        <mat-icon color="warn">star_rate</mat-icon>
+                        <mat-icon>star_rate</mat-icon>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <mat-icon class="mx-auto" color="primary" style="transform: rotate(180deg);">format_quote</mat-icon>
+                        <span class="my-auto px-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+                    </div>
+                </div>
+                <div class="d-flex w-100 card px-3 py-1">
+                    <div class="d-flex mx-auto mb-3 position-relative app-home-testimonial--image"
+                        style="margin-top: -98px; box-shadow: 0px 20px 40px rgba(40, 57, 144, 0.25);">
+                        <img class="w-100 h-100" src="assets/svgs/avatars/testifier-female-2.svg" alt="testifier-image">
+                    </div>
+                    <h5 class="d-flex card-title text-secondary text-center" style="font-size: 16px;">Rebecca Brown Hillux</h5>
+                    <div class="d-flex flex-row mb-3">
+                        <mat-icon color="warn">star_rate</mat-icon>
+                        <mat-icon color="warn">star_rate</mat-icon>
+                        <mat-icon color="warn">star_rate</mat-icon>
+                        <mat-icon color="warn">star_rate</mat-icon>
+                        <mat-icon>star_rate</mat-icon>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <mat-icon class="mx-auto" color="primary" style="transform: rotate(180deg);">format_quote</mat-icon>
+                        <span class="my-auto px-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua.</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

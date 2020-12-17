@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MailboxComponent } from './mailbox/mailbox.component';
 import { SocialMediaIconsComponent } from './social-media-icons/social-media-icons.component';
 import { HeaderBackgroundDirective } from './directives/header-background.directive';
+import { RoomsViewComponent } from './rooms-view/rooms-view.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HeaderBackgroundDirective } from './directives/header-background.direct
     HomeBodyComponent,
     MailboxComponent,
     SocialMediaIconsComponent,
-    HeaderBackgroundDirective
+    HeaderBackgroundDirective,
+    RoomsViewComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +34,7 @@ import { HeaderBackgroundDirective } from './directives/header-background.direct
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatRippleModule,
     MatSnackBarModule
   ],
   providers: [],

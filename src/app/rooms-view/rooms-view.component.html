@@ -1,0 +1,124 @@
+<div appHeaderBackground class="d-flex w-100 h-100 flex-column app-rooms-view--container">
+    <div class="d-flex w-100 mx-0 flex-wrap app-rooms-view--viewer">
+        <div class="d-flex flex-row col-xs-12 col-lg-7 col-xl-8 px-0 app-rooms-view--viewer-image-pane"
+            (swipeleft)="navigateButton(1)"
+            (swiperight)="navigateButton(0)">
+            <img class="d-flex flex-row w-100 my-auto animated" src="assets/images/rooms-{{currImage}}.jpg" alt="topic-image"
+                [@fadeIn]="fadeIn === true">
+            <div class="d-flex flex-column position-absolute h-100 mr-auto"
+                (click)="navigateButton(0)">
+                <span class="d-flex my-auto p-2 mx-2 cursor-pointer app-rooms-view--viewer-image--control">
+                    <mat-icon class="m-auto text-white">keyboard_arrow_left</mat-icon>
+                </span>
+            </div>
+
+            <div class="d-flex flex-column position-absolute h-100 ml-auto" style="right: 0;"
+                (click)="navigateButton(1)">
+                <!-- <span class="d-flex mt-1 font-weight-bold text-white justify-content-center align-items-center" style="font-size: 14px; border-radius: 50%; background-color: #ff000061; width: 48px; height: 48px;">1/5</span> -->
+                <span class="d-flex my-auto p-2 mx-2 cursor-pointer app-rooms-view--viewer-image--control">
+                    <mat-icon class="m-auto text-white">keyboard_arrow_right</mat-icon>
+                </span>
+            </div>
+        </div>
+        <div class="d-flex flex-column col-xs-12 col-lg-5 col-xl-4 py-3 px-3 app-rooms-view--viewer-details-pane">
+            <span class="d-flex font-weight-bold text-danger text-wrap text-capitalize" style="font-size: large; font-family: Quicksand;">{{roomType}}
+                <mat-icon class="ml-auto" color="warn" fontSet="material-icons-outlined">favorite_outline</mat-icon>
+            </span>
+            <p class="mx-0 my-3 text-wrap text-darker" style="font-size: 13px; font-family: Quicksand;">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+
+            <ul class="mx-0 px-0 d-flex flex-column text-dark" style="list-style-type: none; font-size: 13px;">
+                <li class="d-flex mx-0 mb-2 px-0 py-0">
+                    <mat-icon color="warn">label</mat-icon>
+                    <span class="my-auto ml-2">
+                        Spacious Rooms
+                    </span>
+                </li>
+                <li class="d-flex mx-0 mb-2 px-0 py-0">
+                    <mat-icon color="warn">label</mat-icon>
+                    <span class="my-auto ml-2">
+                        5-seater Diner
+                    </span>
+                </li>
+                <li class="d-flex mx-0 mb-2 px-0 py-0">
+                    <mat-icon color="warn">label</mat-icon>
+                    <span class="my-auto ml-2">
+                        Plasma TV
+                    </span>
+                </li>
+                <li class="d-flex mx-0 mb-2 px-0 py-0">
+                    <mat-icon color="warn">label</mat-icon>
+                    <span class="my-auto ml-2">
+                        Satelite TV
+                    </span>
+                </li>
+                <li class="d-flex mx-0 mb-2 px-0 py-0">
+                    <mat-icon color="warn">label</mat-icon>
+                    <span class="my-auto ml-2">
+                        Large Dress Mirror
+                    </span>
+                </li>
+                <li class="d-flex mx-0 mb-2 px-0 py-0">
+                    <mat-icon color="warn">label</mat-icon>
+                    <span class="my-auto ml-2">
+                        Extra Large Rest Room
+                    </span>
+                </li>
+                <li class="d-flex mx-0 mb-2 px-0 py-0">
+                    <mat-icon color="warn">label</mat-icon>
+                    <span class="my-auto ml-2">
+                        Complimentary Meals
+                    </span>
+                </li>
+            </ul>
+            <!-- <div class="d-flex flex-row mt-1 mb-3">
+                <mat-icon class="my-auto mr-2" fontSet="material-icons-outlined" color="warn">star_rate_outline</mat-icon>
+                <mat-icon class="my-auto" color="warn" fontSet="material-icons-outlined">share_outline</mat-icon>
+            </div> -->
+
+            <button mat-raised-button class="my-3 py-2 w-100" color="warn">Book Now</button>
+
+            <div class="d-flex my-3 flex-row">
+                <mat-form-field class="w-100" appearance="outline" color="warn">
+                    <mat-label>Share your experience</mat-label>
+                    <textarea matInput class="d-flex my-auto" placeholder="Rooms service is awesome"></textarea>
+                    <mat-icon matSuffix class="d-flex my-auto" color="warn">chat_bubble_outline</mat-icon>
+                </mat-form-field>
+                <button mat-mini-fab class="my-3 mx-3" color="warn" >
+                    <mat-icon color="">add_comment</mat-icon>
+                </button>
+            </div>
+
+            <button *ngIf="alternateComments !== undefined" mat-mini-fab class="mt-auto mb-3 mx-auto app-rooms-view--alternate-comments--director" color="warn"
+                style="width: 48px; height: 48px;"
+                (click)="focusAlternateComment(alternateComments)">
+                <mat-icon>chat_bubble_outline</mat-icon>
+            </button>
+
+            <div class="d-flex w-100 flex-column mt-3 app-rooms-view--comments">
+                <span class="mb-4 mt-4 text-danger font-weight-bold" style="font-size: 13px;">Join the conversation</span>
+                <div *ngFor="let item of [1,2,3]" class="d-flex flex-column w-100 p-3 mb-5" style="min-height: 48px; background-color: #dddcdc21; border-radius: 16px;">
+                    <span class="mb-3 text-right text-secondary text-darker text-wrap ml-auto w-75" style="font-size: 11px;">Israel Newton & New breed</span>
+                    <span class="text-dark">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt maxime tempore tenetur delectus? Laborum dignissimos reiciendis modi perspiciatis architecto iste quis aliquam ea, commodi odit eum accusamus delectus. Molestias, est.</span>
+                </div>
+                <button mat-stroked-button class="mt-3 w-100 mx-auto py-2" color="warn">More</button>
+            </div>
+        </div>
+
+        <div #alternateComments class="container pb-5 app-rooms-view--alternate-comments">
+            <div class="d-flex w-100 flex-column">
+                <span class="mt-4 mb-4 text-danger font-weight-bold" style="font-size: 13px;">Join the conversation</span>
+                <div *ngFor="let item of [1,2,3]" class="d-flex flex-column w-100 p-3 mb-5"
+                    style="min-height: 48px; background-color: #dddcdc21; border-radius: 16px;">
+                    <span class="mb-3 text-right text-secondary text-darker text-wrap ml-auto w-75" style="font-size: 11px;">Israel
+                        Newton & New breed</span>
+                    <span class="text-dark">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt maxime tempore
+                        tenetur delectus? Laborum dignissimos reiciendis modi perspiciatis architecto iste quis aliquam ea, commodi
+                        odit eum accusamus delectus. Molestias, est.</span>
+                </div>
+                <button mat-stroked-button class="mt-3 w-100 mx-auto py-2" color="warn">More</button>
+            </div>
+        </div>
+    </div>
+</div>
